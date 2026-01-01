@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: game_shop_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: game_shop_postgres
+      POSTGRES_USER: game_user
+      POSTGRES_PASSWORD: game_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
