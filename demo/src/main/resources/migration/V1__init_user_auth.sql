@@ -16,13 +16,13 @@ CREATE TABLE users (
 
                        role_id INT NOT NULL,
 
-                       enable BOOLEAN DEFAULT TRUE,
+                       enabled BOOLEAN DEFAULT TRUE,
                        account_locked BOOLEAN DEFAULT FALSE,
                        fail_login_attempts INT DEFAULT 0, -- số lần thử đăng nhập thất bại
                        last_login TIMESTAMP, -- thời điểm đăng nhập lần cuối
 
                        create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, --thời gian tạo
-                       updated_at TIMESTAMP, -- thời gian cập nhật lần cuối
+                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,-- thời gian cập nhật lần cuối
 
                        CONSTRAINT fk_user_role -- ràng buộc mỗi người dùng có vai trò hợp lệ
                            FOREIGN KEY (role_id)
