@@ -41,6 +41,7 @@ public class RefreshToken {
     @Column(name = "revoked")
     private Boolean revoked;
 
+
     @NotNull
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "create_at", nullable = false)
