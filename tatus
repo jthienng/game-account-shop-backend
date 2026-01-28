@@ -1,0 +1,161 @@
+warning: in the working copy of 'demo/build.gradle', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'demo/src/main/resources/application.properties', LF will be replaced by CRLF the next time Git touches it
+[1mdiff --git a/.idea/data_source_mapping.xml b/.idea/data_source_mapping.xml[m
+[1mindex 3a40092..4e8d062 100644[m
+[1m--- a/.idea/data_source_mapping.xml[m
+[1m+++ b/.idea/data_source_mapping.xml[m
+[36m@@ -2,5 +2,6 @@[m
+ <project version="4">[m
+   <component name="DataSourcePerFileMappings">[m
+     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/6ce90977-ff63-42e9-8f87-e67096630a10/console.sql" value="6ce90977-ff63-42e9-8f87-e67096630a10" />[m
+[32m+[m[32m    <file url="file://$PROJECT_DIR$/demo/src/main/resources/db/migration/V1__init_user_auth.sql" value="6ce90977-ff63-42e9-8f87-e67096630a10" />[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/gradle.xml b/.idea/gradle.xml[m
+[1mindex c003b59..0267888 100644[m
+[1m--- a/.idea/gradle.xml[m
+[1m+++ b/.idea/gradle.xml[m
+[36m@@ -1,5 +1,6 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <project version="4">[m
+[32m+[m[32m  <component name="GradleMigrationSettings" migrationVersion="1" />[m
+   <component name="GradleSettings">[m
+     <option name="linkedExternalProjectsSettings">[m
+       <GradleProjectSettings>[m
+[1mdiff --git a/.idea/misc.xml b/.idea/misc.xml[m
+[1mindex a94cba3..e65521d 100644[m
+[1m--- a/.idea/misc.xml[m
+[1m+++ b/.idea/misc.xml[m
+[36m@@ -1,6 +1,9 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <project version="4">[m
+   <component name="ExternalStorageConfigurationManager" enabled="true" />[m
+[32m+[m[32m  <component name="FrameworkDetectionExcludesConfiguration">[m
+[32m+[m[32m    <file type="web" url="file://$PROJECT_DIR$/demo" />[m
+[32m+[m[32m  </component>[m
+   <component name="ProjectRootManager" version="2">[m
+     <output url="file://$PROJECT_DIR$/out" />[m
+   </component>[m
+[1mdiff --git a/.idea/modules.xml b/.idea/modules.xml[m
+[1mindex 0d01612..35083dd 100644[m
+[1m--- a/.idea/modules.xml[m
+[1m+++ b/.idea/modules.xml[m
+[36m@@ -3,6 +3,7 @@[m
+   <component name="ProjectModuleManager">[m
+     <modules>[m
+       <module fileurl="file://$PROJECT_DIR$/.idea/ass.iml" filepath="$PROJECT_DIR$/.idea/ass.iml" />[m
+[32m+[m[32m      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/demo.main.iml" />[m
+     </modules>[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/.idea/sqldialects.xml b/.idea/sqldialects.xml[m
+[1mindex 03b5177..d15c20e 100644[m
+[1m--- a/.idea/sqldialects.xml[m
+[1m+++ b/.idea/sqldialects.xml[m
+[36m@@ -1,6 +1,10 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <project version="4">[m
+   <component name="SqlDialectMappings">[m
+[31m-    <file url="file://$PROJECT_DIR$/demo/src/main/resources/db/migration/V1__init_user_auth.sql" dialect="GenericSQL" />[m
+[32m+[m[32m    <file url="file://$PROJECT_DIR$/demo/src/main/resources/db/migration/V1__init_user_auth.sql" dialect="PostgreSQL" />[m
+[32m+[m[32m  </component>[m
+[32m+[m[32m  <component name="SqlResolveMappings">[m
+[32m+[m[32m    <file url="file://$PROJECT_DIR$/demo/src/main/resources/db/migration/V1__init_user_auth.sql" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;@negative&quot;:&quot;1&quot;   }  } }}" />[m
+[32m+[m[32m    <file url="PROJECT" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;@negative&quot;:&quot;1&quot;   }  } }}" />[m
+   </component>[m
+ </project>[m
+\ No newline at end of file[m
+[1mdiff --git a/demo/build.gradle b/demo/build.gradle[m
+[1mindex ad782c4..69b4fd7 100644[m
+[1m--- a/demo/build.gradle[m
+[1m+++ b/demo/build.gradle[m
+[36m@@ -35,6 +35,7 @@[m [mdependencies {[m
+ 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'[m
+ 	implementation 'org.flywaydb:flyway-database-postgresql'[m
+ 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'[m
+[32m+[m	[32mimplementation 'org.flywaydb:flyway-core'[m
+ 	compileOnly 'org.projectlombok:lombok'[m
+ 	developmentOnly 'org.springframework.boot:spring-boot-devtools'[m
+ 	runtimeOnly 'com.h2database:h2'[m
+[1mdiff --git a/demo/docker-compose.yml b/demo/docker-compose.yml[m
+[1mindex 59aa41a..c2e23af 100644[m
+[1m--- a/demo/docker-compose.yml[m
+[1m+++ b/demo/docker-compose.yml[m
+[36m@@ -1,4 +1,18 @@[m
+[31m-FROM ubuntu:latest[m
+[31m-LABEL authors="dthie"[m
+[32m+[m[32mversion: "3.9"[m
+ [m
+[31m-ENTRYPOINT ["top", "-b"][m
+\ No newline at end of file[m
+[32m+[m[32mservices:[m
+[32m+[m[32m  postgres:[m
+[32m+[m[32m    image: postgres:16[m
+[32m+[m[32m    container_name: game_shop_postgres[m
+[32m+[m[32m    restart: unless-stopped[m
+[32m+[m[32m    environment:[m
+[32m+[m[32m      POSTGRES_DB: game_shop_postgres[m
+[32m+[m[32m      POSTGRES_USER: game_user[m
+[32m+[m[32m      POSTGRES_PASSWORD: game_pass[m
+[32m+[m[32m    ports:[m
+[32m+[m[32m      - "5432:5432"[m
+[32m+[m[32m    volumes:[m
+[32m+[m[32m      - postgres_data:/var/lib/postgresql/data[m
+[32m+[m
+[32m+[m[32mvolumes:[m
+[32m+[m[32m  postgres_data:[m
+[1mdiff --git a/demo/src/main/resources/application.properties b/demo/src/main/resources/application.properties[m
+[1mindex 38f50e9..2026cd1 100644[m
+[1m--- a/demo/src/main/resources/application.properties[m
+[1m+++ b/demo/src/main/resources/application.properties[m
+[36m@@ -1 +1,8 @@[m
+ spring.application.name=sas.spb[m
+[32m+[m[32mspring.datasource.url=jdbc:postgresql://localhost:5432/game_shop_postgres[m
+[32m+[m[32mspring.datasource.username=game_user[m
+[32m+[m[32mspring.datasource.password=game_pass[m
+[32m+[m[32mspring.datasource.driver-class-name=org.postgresql.Driver[m
+[32m+[m[32mspring.jpa.hibernate.ddl-auto=none[m
+[32m+[m[32mspring.flyway.enabled=true[m
+[32m+[m[32mspring.flyway.baseline-on-migrate=true[m
+\ No newline at end of file[m
+[1mdiff --git a/demo/src/main/resources/db/migration/V1__init_user_auth.sql b/demo/src/main/resources/db/migration/V1__init_user_auth.sql[m
+[1mindex e69de29..22d800a 100644[m
+[1m--- a/demo/src/main/resources/db/migration/V1__init_user_auth.sql[m
+[1m+++ b/demo/src/main/resources/db/migration/V1__init_user_auth.sql[m
+[36m@@ -0,0 +1,53 @@[m
+[32m+[m[32mCREATE EXTENSION IF NOT EXISTS "uuid-ossp";[m
+[32m+[m[32m--ROLE-------[m
+[32m+[m[32mCREATE TABLE roles ([m
+[32m+[m[32m    id SERIAL  PRIMARY KEY, -- khoá chính[m
+[32m+[m[32m    name VARCHAR(50) NOT NULL UNIQUE, -- tên vai trò vd (user, admin,...)[m
+[32m+[m[32m    description VARCHAR(255) --mô tả vai trò[m
+[32m+[m[32m);[m
+[32m+[m
+[32m+[m[32m--USER-------[m
+[32m+[m[32mCREATE TABLE users ([m
+[32m+[m[32m    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),[m
+[32m+[m
+[32m+[m[32m    username VARCHAR(255) NOT NULL UNIQUE,[m
+[32m+[m[32m    mail VARCHAR(255) NOT NULL UNIQUE,[m
+[32m+[m[32m    password VARCHAR(255) NOT NULL,[m
+[32m+[m
+[32m+[m[32m    role_id INT NOT NULL,[m
+[32m+[m
+[32m+[m[32m    enable BOOLEAN DEFAULT TRUE,[m
+[32m+[m[32m    account_locked BOOLEAN DEFAULT FALSE,[m
+[32m+[m[32m    fail_login_attempts INT DEFAULT 0, -- số lần thử đăng nhập thất bại[m
+[32m+[m[32m    last_login TIMESTAMP, -- thời điểm đăng nhập lần cuối[m
+[32m+[m
+[32m+[m[32m    create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, --thời gian tạo[m
+[32m+[m[32m    updated_at TIMESTAMP, -- thời gian cập nhật lần cuối[m
+[32m+[m
+[32m+[m[32m    CONSTRAINT fk_user_role -- ràng buộc mỗi người dùng có vai trò hợp lệ[m
+[32m+[m[32m        FOREIGN KEY (role_id)[m
+[32m+[m[32m        REFERENCES roles(id)[m
+[32m+[m
+[32m+[m[32m);[m
+[32m+[m
+[32m+[m[32mCREATE TABLE refresh_tokens ([m
+[32m+[

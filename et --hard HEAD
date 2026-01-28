@@ -1,0 +1,16 @@
+[33mcommit b33704c92059c6b4bdce2385dda65bef9ece7252[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Nguyen Duy Thien <dthien27112k6@gmail.com>
+Date:   Fri Jan 2 00:09:44 2026 +0700
+
+    feat: init user auth schema using Flyway
+    
+    - Add V1 migration: roles, users, refresh_tokens tables
+    - Enable uuid-ossp extension
+    - Insert default USER and ADMIN roles
+    - Update docker-compose to create database automatically
+
+[33mcommit 8463016dfe51fea2696848070af33e4943ce06f7[m
+Author: Nguyen Duy Thien <dthien27112k6@gmail.com>
+Date:   Tue Dec 30 01:28:39 2025 +0700
+
+    init: bootstrap Spring Boot project
