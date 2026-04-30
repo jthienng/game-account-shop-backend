@@ -37,9 +37,7 @@ public class RefreshTokenServiceImpl implements RefreshTokenService {
 
     @Override
     public Optional<RefreshToken> findByToken(String token) {
-        return refreshTokenRepository.findAll().stream()
-                .filter(rt -> rt.getToken().equals(token))
-                .findFirst();
+        return refreshTokenRepository.findByToken(token);
     }
 
     @Override
