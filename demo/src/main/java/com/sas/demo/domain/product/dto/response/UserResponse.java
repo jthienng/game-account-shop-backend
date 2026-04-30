@@ -1,6 +1,5 @@
 package com.sas.demo.domain.product.dto.response;
 
-import aQute.bnd.annotation.metatype.Meta;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
