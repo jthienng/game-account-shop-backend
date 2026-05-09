@@ -9,6 +9,8 @@ services:
       POSTGRES_DB: game_shop_postgres
       POSTGRES_USER: game_user
       POSTGRES_PASSWORD: game_pass
+      TZ : UTC
+      PGTZ : UTC
     ports:
       - "5432:5432"
     volumes:
